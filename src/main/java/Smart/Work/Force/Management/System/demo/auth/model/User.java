@@ -3,6 +3,7 @@ package Smart.Work.Force.Management.System.demo.auth.model;
 import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -30,7 +31,7 @@ public class User {
                 joinColumns = @JoinColumn(name = "user_id"),
                 inverseJoinColumns = @JoinColumn(name = "role_id")
         )
-        private Set<Role> roles;
+        private Set<Role> roles = new HashSet<>();
 
         private LocalDateTime createdAt = LocalDateTime.now();
 
