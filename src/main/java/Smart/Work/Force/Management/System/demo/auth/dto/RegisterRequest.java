@@ -1,4 +1,4 @@
-package com.yourorg.project.auth.dto;
+package Smart.Work.Force.Management.System.demo.auth.dto;
 
 import lombok.Data;
 

@@ -1,6 +1,6 @@
-package com.yourorg.project.auth.repository;
+package Smart.Work.Force.Management.System.demo.auth.repository;
 
-import com.yourorg.project.auth.model.RefreshToken;
+import Smart.Work.Force.Management.System.demo.auth.model.RefreshToken;
 import org.springframework.data.jpa.repository.JpaRepository;
 public interface RefreshTokenRepository extends JpaRepository<RefreshToken,Long> {
 

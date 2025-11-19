@@ -1,23 +1,22 @@
-package com.yourorg.project.auth.service;
+package Smart.Work.Force.Management.System.demo.auth.service;
 
-import com.yourorg.project.auth.dto.RegisterRequest;
-import com.yourorg.project.auth.dto.RegisterResponse;
-import com.yourorg.project.auth.model.Role;
-import com.yourorg.project.auth.model.User;
-import com.yourorg.project.auth.repository.RoleRepository;
-import com.yourorg.project.auth.repository.UserRepository;
+import Smart.Work.Force.Management.System.demo.auth.repository.UserRepository;
+import Smart.Work.Force.Management.System.demo.auth.dto.RegisterRequest;
+import Smart.Work.Force.Management.System.demo.auth.dto.RegisterResponse;
+import Smart.Work.Force.Management.System.demo.auth.model.Role;
+import Smart.Work.Force.Management.System.demo.auth.model.User;
+import Smart.Work.Force.Management.System.demo.auth.repository.RoleRepository;
 
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 @Service
-public class AuthServiceImpl {
+public class AuthServiceImpl implements AuthService {
     private final UserRepository userRepository;
     private final RoleRepository roleRepository;
     private final PasswordEncoder passwordEncoder;
 
-    public AuthServiceImpl(UserRepository userRepository, RoleRepository roleRepository,
-                           PasswordEncoder passwordEncoder) {
+    public AuthServiceImpl(UserRepository userRepository, RoleRepository roleRepository,PasswordEncoder passwordEncoder) {
         this.userRepository = userRepository;
         this.roleRepository = roleRepository;
         this.passwordEncoder = passwordEncoder;
@@ -34,7 +33,7 @@ public class AuthServiceImpl {
             throw new RuntimeException("Username already exists");
         }
 
-        // Fetch role from DB (ROLE_ADMIN, ROLE_MANAGER, etc.)
+//         Fetch role from DB (ROLE_ADMIN, ROLE_MANAGER, etc.)
         Role role = roleRepository.findByName(request.getRole())
                 .orElseThrow(() -> new RuntimeException("Invalid Role"));
 

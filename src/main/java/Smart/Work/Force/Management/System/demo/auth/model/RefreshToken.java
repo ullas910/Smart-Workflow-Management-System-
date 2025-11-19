@@ -1,4 +1,4 @@
-package com.yourorg.project.auth.model;
+package Smart.Work.Force.Management.System.demo.auth.model;
 
 import jakarta.persistence.*;
 

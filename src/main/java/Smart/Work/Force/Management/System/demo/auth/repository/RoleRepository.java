@@ -1,6 +1,6 @@
-package com.yourorg.project.auth.repository;
+package Smart.Work.Force.Management.System.demo.auth.repository;
 
-import com.yourorg.project.auth.model.Role;
+import Smart.Work.Force.Management.System.demo.auth.model.Role;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;

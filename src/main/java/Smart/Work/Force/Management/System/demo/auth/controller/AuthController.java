@@ -1,8 +1,8 @@
-package com.yourorg.project.auth.controller;
+package Smart.Work.Force.Management.System.demo.auth.controller;
 
-import com.yourorg.project.auth.dto.RegisterRequest;
-import com.yourorg.project.auth.dto.RegisterResponse;
-import com.yourorg.project.auth.service.AuthService;
+import Smart.Work.Force.Management.System.demo.auth.service.AuthService;
+import Smart.Work.Force.Management.System.demo.auth.dto.RegisterRequest;
+import Smart.Work.Force.Management.System.demo.auth.dto.RegisterResponse;
 import org.springframework.web.bind.annotation.*;
 import jakarta.validation.Valid;
 
@@ -17,6 +17,7 @@ public class AuthController {
 
     @PostMapping("/register")
     public RegisterResponse register(@Valid @RequestBody RegisterRequest request) {
+//        return authService.register(request);
         return authService.register(request);
     }
 }
