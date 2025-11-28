@@ -12,6 +12,9 @@ public class RegisterResponse {
         this.message = message;
     }
 
+    public RegisterResponse(String s) {
+    }
+
     // Getters
     public Long getId()
     {

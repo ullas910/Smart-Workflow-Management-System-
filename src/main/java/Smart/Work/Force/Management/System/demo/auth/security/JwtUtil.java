@@ -48,6 +48,10 @@ public class JwtUtil {
                 .getExpiration()
                 .before(new Date());
     }
+
+    public String generateAccessToken(UserDetails userDetails) {
+        return Jwts.builder().compact();
+    }
 }
 
 
