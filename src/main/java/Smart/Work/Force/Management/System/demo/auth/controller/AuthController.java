@@ -28,14 +28,17 @@ public class AuthController {
     public ResponseEntity<RegisterResponse> register(@RequestBody RegisterRequest request) {
         return ResponseEntity.ok(authService.register(request));
     }
+
+
+
+
     @PostMapping("/login")
     public ResponseEntity<LoginResponse> login(@Valid @RequestBody LoginRequest request) {
         // 1. Authenticate user credentials via AuthService
         // 2. Generate the JWT access token if successful
-        String jwtAccessToken = authService.login(request);
 
         // 3. Return the token in the response DTO
-        return ResponseEntity.ok(new LoginResponse(jwtAccessToken));
+        return ResponseEntity.ok(authService.login(request));
     }
     @GetMapping("/admin/ping")
     public String adminPing(){

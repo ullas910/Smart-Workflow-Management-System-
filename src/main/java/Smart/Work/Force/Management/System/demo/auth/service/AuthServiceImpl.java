@@ -1,6 +1,7 @@
 package Smart.Work.Force.Management.System.demo.auth.service;
 
 import Smart.Work.Force.Management.System.demo.auth.dto.LoginRequest;
+import Smart.Work.Force.Management.System.demo.auth.dto.LoginResponse;
 import Smart.Work.Force.Management.System.demo.auth.dto.RegisterRequest;
 import Smart.Work.Force.Management.System.demo.auth.dto.RegisterResponse;
 import Smart.Work.Force.Management.System.demo.auth.model.User;
@@ -46,29 +47,25 @@ public class AuthServiceImpl implements AuthService {
 
         // 3. Save to UserRepository
         User user1 = userRepository.save(user);
-        //RegisterResponse response = new RegisterResponse(user1);
+        // RegisterResponse response = new RegisterResponse(user1);
         // 4. Return response
         return new RegisterResponse(user1);
     }
 
     @Override
-    public String login(LoginRequest request) {
+    public LoginResponse login(LoginRequest request) {
         // 1. Authenticate the user using Spring Security's AuthenticationManager
         Authentication authentication = authenticationManager.authenticate(
-                new UsernamePasswordAuthenticationToken(request.getUsername(), request.getPassword())
-        );
+                new UsernamePasswordAuthenticationToken(request.getUsername(), request.getPassword()));
 
-
-        // If authentication fails, an exception (e.g., BadCredentialsException) is thrown
+        // If authentication fails, an exception (e.g., BadCredentialsException) is
+        // thrown
         // which Spring Security handles, resulting in a 401 response.
 
         // 2. If successful, get the UserDetails from the Authentication object
         UserDetails userDetails = (UserDetails) authentication.getPrincipal();
+        System.err.println(userDetails.toString());
 
-        // 3. Generate the JWT (access token)
-        String accessToken = jwtUtil.generateToken(userDetails);
-
-        // 4. Return the token
-        return accessToken;
+        return new LoginResponse(jwtUtil.generateToken(userDetails));
     }
 }
