@@ -44,14 +44,11 @@ public class AuthServiceImpl implements AuthService {
         String encodedPassword = passwordEncoder.encode(request.getPassword());
         user.setPassword(encodedPassword);
 
-        // **IMPORTANT**: You should also set the user's role(s) here.
-        // user.setRoles(Set.of(roleRepository.findByName("USER")));
-
         // 3. Save to UserRepository
-        userRepository.save(user);
-
+        User user1 = userRepository.save(user);
+        //RegisterResponse response = new RegisterResponse(user1);
         // 4. Return response
-        return new RegisterResponse("User registered successfully! Username: " + user.getUsername());
+        return new RegisterResponse(user1);
     }
 
     @Override
@@ -61,6 +58,7 @@ public class AuthServiceImpl implements AuthService {
                 new UsernamePasswordAuthenticationToken(request.getUsername(), request.getPassword())
         );
 
+
         // If authentication fails, an exception (e.g., BadCredentialsException) is thrown
         // which Spring Security handles, resulting in a 401 response.
 
@@ -68,7 +66,7 @@ public class AuthServiceImpl implements AuthService {
         UserDetails userDetails = (UserDetails) authentication.getPrincipal();
 
         // 3. Generate the JWT (access token)
-        String accessToken = jwtUtil.generateAccessToken(userDetails);
+        String accessToken = jwtUtil.generateToken(userDetails);
 
         // 4. Return the token
         return accessToken;

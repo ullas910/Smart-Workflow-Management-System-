@@ -1,32 +1,19 @@
 package Smart.Work.Force.Management.System.demo.auth.dto;
 
+import Smart.Work.Force.Management.System.demo.auth.model.User;
+import lombok.Data;
+
+@Data
 public class RegisterResponse {
 
     private Long id;
     private String username;
     private String message;
 
-    public RegisterResponse(Long id, String username, String message) {
-        this.id = id;
-        this.username = username;
-        this.message = message;
-    }
-
-    public RegisterResponse(String s) {
-    }
-
-    // Getters
-    public Long getId()
-    {
-        return id;
-    }
-    public String getUsername()
-    {
-        return username;
-    }
-    public String getMessage()
-    {
-        return message;
+    public RegisterResponse(User user1) {
+        this.id = user1.getId();
+        this.username = user1.getUsername();
+        this.message = "User Registered";
     }
 }
 
